@@ -35,7 +35,7 @@ Polymer({
   is: 'firebase-document',
 
   properties: {
-    defaultZeroValue: Stringq
+    defaultZeroValue: String
   },
 
   behaviors: [
