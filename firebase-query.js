@@ -125,7 +125,7 @@ Polymer({
      */
     equalTo: {
       type: Object,
-      value: null
+      value: undefined
     },
 
     /**
@@ -260,7 +260,7 @@ Polymer({
       query = query.endAt(endAt);
     }
 
-    if (equalTo !== null) {
+    if (equalTo !== undefined) {
       query = query.equalTo(equalTo);
     }
 

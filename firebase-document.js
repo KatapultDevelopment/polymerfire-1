@@ -34,6 +34,10 @@ import firebase from '@firebase/app';
 Polymer({
   is: 'firebase-document',
 
+  properties: {
+    defaultZeroValue: Stringq
+  },
+
   behaviors: [
     FirebaseDatabaseBehavior
   ],
@@ -56,7 +60,7 @@ Polymer({
 
 
   get zeroValue() {
-    return {};
+    return this.defaultZeroValue;
   },
 
   /**
@@ -151,6 +155,10 @@ Polymer({
   __refChanged: function(ref, oldRef) {
     if (oldRef) {
       oldRef.off('value', this.__onFirebaseValue, this);
+      this.syncToMemory(function() {
+        this._log('Clearing data from Old Ref:', null);
+          return this.set('data', null);
+      });
     }
 
     if (ref) {
@@ -176,10 +184,10 @@ Polymer({
           // or if  this.data does not exist
           // or value is primitive
           // or if firebase value obj contain less keys than this.data (https://github.com/Polymer/polymer/issues/2565)
-          if (this.__needSetData || !this.data || typeof value !== 'object' || ( Object.keys(value).length <  Object.keys(this.data).length)) {
-            this.__needSetData = false;
+          // if (this.__needSetData || !this.data || typeof value !== 'object' || ( Object.keys(value).length <  Object.keys(this.data).length)) {
+            // this.__needSetData = false;
             return this.set('data', value);
-          }
+          // }
 
           // now, we loop over keys
           for (var prop in value) {
