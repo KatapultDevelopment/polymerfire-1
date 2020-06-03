@@ -55,6 +55,21 @@ export const FirebaseDatabaseBehaviorImpl = {
     disabled: {
       type: Boolean,
       value: false
+    },
+
+    /**
+     * `exists` is set to `true` when the data actually exists for the 
+     * specified path; `false` otherwise. 
+     * When we are unable to determine whether data exists or not 
+     * (e.g. first round trip to the server not yet performed) the value 
+     * is `null`
+     */
+    exists: {
+      type: Boolean,
+      notify: true,
+      value: null, 
+      readOnly: true,
+      reflectToAttribute: true
     }
   },
 
@@ -104,6 +119,7 @@ export const FirebaseDatabaseBehaviorImpl = {
   },
 
   __pathChanged: function(path, oldPath) {
+    this._setExists(null);
     if (!this.disabled && !this.valueIsEmpty(this.data)) {
       this.syncToMemory(function() {
         this.data = this.zeroValue;

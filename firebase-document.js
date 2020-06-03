@@ -168,10 +168,12 @@ Polymer({
 
   __onFirebaseValue: function(snapshot) {
     var value = snapshot.val();
+    var exists = true;
 
     if (value == null) {
       value = this.zeroValue;
       this.__needSetData = true;
+      exists = false;
     }
 
     if (!this.isNew) {
@@ -196,6 +198,8 @@ Polymer({
             }
           }
         });
+        this._setExists(exists);
+        if (!exists) this.fire('empty-result');
       });
     }
   }
