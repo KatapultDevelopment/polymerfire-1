@@ -96,8 +96,9 @@ Polymer({
 
               resolve();
             }).path.toString();
-      }
-      this.path = path;
+          }
+
+          this.path = path;
     }.bind(this));
   },
 

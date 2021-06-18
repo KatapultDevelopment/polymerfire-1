@@ -96,19 +96,17 @@ export const FirebaseDatabaseBehaviorImpl = {
   },
 
   __computeDb: function(app) {
-    console.log('CALC THAT DB', app.database());
     return app ? app.database() : null;
   },
 
   __computeRef: function(db, path) {
-    console.log('dud it run', db == null, path == null, !this.__pathReady(path), this.disabled, path);
     if (db == null ||
         path == null ||
         !this.__pathReady(path) ||
         this.disabled) {
       return null;
     }
-    console.log('we got a db ref', db.ref(path))
+
     return db.ref(path);
   },
 
