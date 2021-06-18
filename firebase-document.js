@@ -87,7 +87,7 @@ Polymer({
         path = parentPath + '/' + key;
         resolve(this._setFirebaseValue(path, this.data));
       } else {
-        path = firebase.database(this.app).ref(parentPath)
+        path = this.app.database().ref(parentPath)
             .push(this.data, function(error) {
               if (error) {
                 reject(error);
@@ -97,7 +97,6 @@ Polymer({
               resolve();
             }).path.toString();
       }
-
       this.path = path;
     }.bind(this));
   },

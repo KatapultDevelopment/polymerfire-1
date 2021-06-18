@@ -23,6 +23,7 @@ import '@firebase/storage';
 import '@firebase/messaging';
 import '@firebase/functions';
 import '@firebase/analytics';
+import '../../js/firebaseWorker/firebaseWorker.js';
 
 /**
  * The firebase-app element is used for initializing and configuring your
@@ -137,7 +138,6 @@ Polymer({
     } else {
       return null;
     }
-
-    return firebase.app(name);
+    return FirebaseWorker.app(name);
   }
 });

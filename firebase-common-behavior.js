@@ -53,9 +53,9 @@ export const FirebaseCommonBehaviorImpl = {
 
     try {
       if (appName == null) {
-        this.app = firebase.app();
+        this.app = FirebaseWorker.app();
       } else {
-        this.app = firebase.app(appName);
+        this.app = FirebaseWorker.app(appName);
       }
     } catch (e) {
       // appropriate app hasn't been initialized yet
