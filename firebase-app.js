@@ -23,7 +23,7 @@ import '@firebase/storage';
 import '@firebase/messaging';
 import '@firebase/functions';
 import '@firebase/analytics';
-import '../../js/firebaseWorker/firebaseWorker.js';
+import 'source/_resources/js/firebaseWorker/firebaseWorker.js';
 
 /**
  * The firebase-app element is used for initializing and configuring your
