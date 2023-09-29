@@ -8,7 +8,7 @@ https://github.com/firebase/polymerfire/blob/master/LICENSE
 // Polymer imports
 import '@polymer/polymer/polymer-legacy.js';
 import { FirebaseCommonBehavior } from './firebase-common-behavior.js';
-import '@firebase/storage-compat';
+import 'firebase/compat/storage';
 
 /** @polymerBehavior Polymer.FirebaseStorageBehavior */
 export const FirebaseStorageBehaviorImpl = {
